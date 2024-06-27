@@ -5,15 +5,25 @@ import librosa
 import soundfile as sf
 import io
 import os
+import traceback
+
+# Example custom layer or object (if any)
+# from my_custom_objects import MyCustomLayer
 
 # Function to load and return model
 @st.cache_resource
 def load_model(model_path):
     try:
-        model = tf.keras.models.load_model(model_path)
+        # Use custom_objects if you have any custom layers or objects
+        custom_objects = {
+            # 'MyCustomLayer': MyCustomLayer,
+            # Add any other custom objects here
+        }
+        model = tf.keras.models.load_model(model_path, custom_objects=custom_objects)
         st.success("Model loaded successfully.")
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
+        st.text(traceback.format_exc())
         raise e
     return model
 
