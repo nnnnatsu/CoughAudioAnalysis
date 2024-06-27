@@ -7,10 +7,11 @@ import io
 import os
 
 # Function to load and return model
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_model(model_path):
     try:
         model = tf.keras.models.load_model(model_path)
+        st.success("Model loaded successfully.")
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
         raise e
@@ -59,7 +60,7 @@ def main():
         st.write("Current working directory:", os.getcwd())
         
         # Load the model
-        model_path = 'MODELS_exported/MODEL_CNN01/model_CNN_1.keras'  # Replace with your model path
+        model_path = 'C:/Users/chidepha photralux/Desktop/my_webapp/model_CNN_1.keras'  # Replace with your model path
         try:
             model = load_model(model_path)
             # Make prediction
