@@ -9,10 +9,11 @@ import os
 # Function to load and return model
 @st.cache(allow_output_mutation=True)
 def load_model(model_path):
-    # Check if the file exists
-    if not os.path.exists(model_path):
-        raise ValueError(f"File not found: {model_path}. Please ensure the file is an accessible `.keras` zip file.")
-    model = tf.keras.models.load_model(model_path)
+    try:
+        model = tf.keras.models.load_model(model_path)
+    except Exception as e:
+        st.error(f"Error loading model: {str(e)}")
+        raise e
     return model
 
 # Function to preprocess the input data
@@ -58,7 +59,7 @@ def main():
         st.write("Current working directory:", os.getcwd())
         
         # Load the model
-        model_path = 'model_CNN_1.keras'  # Replace with your model path
+        model_path = 'MODELS_exported/MODEL_CNN01/model_CNN_1.keras'  # Replace with your model path
         try:
             model = load_model(model_path)
             # Make prediction
@@ -66,8 +67,8 @@ def main():
                 prediction = model.predict(processed_data)
                 st.write('Prediction:')
                 st.write(prediction)  # Display the prediction results
-        except ValueError as e:
-            st.error(str(e))
+        except Exception as e:
+            st.error(f"Failed to load or predict using the model: {str(e)}")
 
 if __name__ == '__main__':
     main()
