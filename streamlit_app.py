@@ -60,7 +60,7 @@ def main():
         st.write("Current working directory:", os.getcwd())
         
         # Load the model
-        model_path = 'C:/Users/chidepha photralux/Desktop/my_webapp/model_CNN_1.keras'  # Replace with your model path
+        model_path = 'model_CNN_1.keras'  # Replace with your model path
         try:
             model = load_model(model_path)
             # Make prediction
