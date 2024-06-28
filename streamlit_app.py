@@ -7,6 +7,9 @@ import io
 import os
 import traceback
 
+# Example custom layer or object (if any)
+# from my_custom_objects import MyCustomLayer
+
 # Function to load and return model
 @st.cache_resource
 def load_model(model_path):
@@ -67,7 +70,7 @@ def main():
         st.write("Current working directory:", os.getcwd())
         
         # Load the model
-        model_path = 'MODEL_CNN03.h5'  # Updated model path
+        model_path = 'model_CNN_1.keras'  # Replace with your model path
         try:
             model = load_model(model_path)
             # Make prediction
