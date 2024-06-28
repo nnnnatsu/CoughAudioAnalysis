@@ -6,18 +6,14 @@ import soundfile as sf
 import io
 import os
 import traceback
-
-# Example custom layer or object (if any)
-# from my_custom_objects import MyCustomLayer
+from audio_recorder_streamlit import audio_recorder
 
 # Function to load and return model
 @st.cache_resource
 def load_model(model_path):
     try:
-        # Use custom_objects if you have any custom layers or objects
         custom_objects = {
-            # 'MyCustomLayer': MyCustomLayer,
-            # Add any other custom objects here
+            # Add any custom objects here
         }
         model = tf.keras.models.load_model(model_path, custom_objects=custom_objects)
         st.success("Model loaded successfully.")
@@ -55,12 +51,25 @@ def preprocess_input(audio_data, num_mfcc=13, n_fft=2048, hop_length=512, expect
 # Main function to run the Streamlit app
 def main():
     st.title('Audio Classification App')
-    st.write('Upload an audio file and get predictions!')
+    st.write('Upload an audio file or record your audio and get predictions!')
 
+    # Option to upload an audio file
     uploaded_file = st.file_uploader("Choose an audio file", type=["wav", "mp3"])
 
+    # Option to record audio
+    st.write("Or record your audio:")
+    audio_bytes = audio_recorder(
+        energy_threshold=(-1.0, 1.0),
+        pause_threshold=3.0,
+    )
+
+    audio_data = None
     if uploaded_file is not None:
         audio_data = uploaded_file.read()
+    elif audio_bytes is not None:
+        audio_data = audio_bytes
+
+    if audio_data is not None:
         st.audio(audio_data, format='audio/wav')  # Display the audio file
 
         # Preprocess the audio data
@@ -70,7 +79,7 @@ def main():
         st.write("Current working directory:", os.getcwd())
         
         # Load the model
-        model_path = 'model_CNN_1.keras'  # Replace with your model path
+        model_path = 'MODEL_CNN03.h5'  # Updated model path
         try:
             model = load_model(model_path)
             # Make prediction
