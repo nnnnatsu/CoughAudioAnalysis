@@ -1,6 +1,6 @@
-streamlit
-numpy
-tensorflow
-librosa
-soundfile
-audio-recorder-streamlit
+streamlit==1.14.0
+numpy<2.0.0
+tensorflow==2.9.1
+librosa==0.9.1
+soundfile==0.10.3.post1
+audio-recorder-streamlit==0.1.0
