@@ -3,4 +3,4 @@ numpy<2.0.0
 tensorflow==2.16.1
 librosa==0.9.1
 soundfile==0.10.3.post1
-audio-recorder-streamlit==0.1.0
+audio-recorder-streamlit==0.0.9
