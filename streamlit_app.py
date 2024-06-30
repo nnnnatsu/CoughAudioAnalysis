@@ -52,7 +52,7 @@ def main():
         processed_data = preprocess_input(audio_data)
 
         # Load the model
-        model_path = 'MODEL_CNN (1).h5'  # Replace with your model path
+        model_path = 'MODEL_CNN.h5'  # Replace with your model path
         model = load_model(model_path)
 
         # Make prediction
