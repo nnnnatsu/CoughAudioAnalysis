@@ -1,12 +1,11 @@
 #!/bin/sh
 # Ensure distutils is installed
-pip install setuptools
-pip install wheel
-pip install distutils
+pip install setuptools wheel
 
-# Proceed with the rest of the installations
+# Install dependencies
 pip install -r requirements.txt
 
+# Run Streamlit app
 PORT=${PORT:-8501}
 export PORT
 streamlit run streamlit_app.py --server.port $PORT
