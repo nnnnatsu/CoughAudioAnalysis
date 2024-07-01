@@ -5,16 +5,14 @@
       "src": "streamlit_app.py",
       "use": "@vercel/python",
       "config": {
-        "server": {
-          "includeFiles": ["MODEL_CNN.h5"]
-        }
+        "includeFiles": ["MODEL_CNN.h5"]
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/streamlit_app.py"
     }
   ]
 }
