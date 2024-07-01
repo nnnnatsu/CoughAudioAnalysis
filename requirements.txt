@@ -2,5 +2,5 @@ streamlit
 tensorflow
 librosa
 soundfile
-numpy
+numpy==1.24.3
 audio-recorder-streamlit
