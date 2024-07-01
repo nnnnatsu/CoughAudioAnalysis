@@ -4,10 +4,9 @@ import tensorflow as tf
 import librosa
 import soundfile as sf
 import io
+import os
 
 # Function to load and return model
-
-# @st.cache_data(allow_output_mutation=True)
 def load_model(model_path):
     model = tf.keras.models.load_model(model_path)
     return model
@@ -62,4 +61,6 @@ def main():
             st.write(prediction)  # Display the prediction results
 
 if __name__ == '__main__':
-    main()
+    port = int(os.environ.get("PORT", 8501))
+    st._is_running_with_streamlit = False
+    st.run(main, server.port=port)
