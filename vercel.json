@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "install_packages.py",
-      "use": "@vercel/python"
-    },
-    {
       "src": "streamlit_app.py",
       "use": "@vercel/python",
       "config": {
@@ -16,7 +12,15 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/streamlit_app.py"
+      "dest": "streamlit_app.py"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "PYTHONUNBUFFERED": "1"
+    },
+    "commands": [
+      "sh setup.sh"
+    ]
+  }
 }
