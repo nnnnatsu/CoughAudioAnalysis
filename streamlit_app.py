@@ -62,4 +62,4 @@ def main():
 
 if __name__ == '__main__':
     port = os.environ.get("PORT", 8501)
-    st.run(main, server_port=port)
+    #st.run(main, server_port=port)
