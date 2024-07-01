@@ -61,5 +61,5 @@ def main():
             st.write(prediction)  # Display the prediction results
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8501))
+    port = os.environ.get("PORT", 8501)
     st.run(main, server_port=port)
