@@ -14,5 +14,14 @@
       "src": "/(.*)",
       "dest": "streamlit_app.py"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "PYTHONUNBUFFERED": "1"
+    },
+    "commands": [
+      "sh setup.sh"
+    ]
+  }
 }
+
