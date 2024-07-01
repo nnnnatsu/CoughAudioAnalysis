@@ -2,26 +2,21 @@
   "version": 2,
   "builds": [
     {
+      "src": "install_packages.py",
+      "use": "@vercel/python"
+    },
+    {
       "src": "streamlit_app.py",
       "use": "@vercel/python",
       "config": {
-        "server": {
-          "includeFiles": ["MODEL_CNN.h5"]
-        }
+        "includeFiles": ["MODEL_CNN.h5"]
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/streamlit_app.py"
     }
-  ],
-  "build": {
-    "env": {
-      "PYTHONUNBUFFERED": "1"
-    },
-    "shell": "bash",
-    "cmd": "apt-get update && apt-get install -y python3-distutils && pip install -r requirements.txt && chmod +x setup.sh && ./setup.sh"
-  }
+  ]
 }
