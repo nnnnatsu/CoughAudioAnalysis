@@ -62,5 +62,4 @@ def main():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8501))
-    st._is_running_with_streamlit = False
-    st.run(main, server.port=port)
+    st.run(main, server_port=port)
