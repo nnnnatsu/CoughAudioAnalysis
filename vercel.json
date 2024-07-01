@@ -1,3 +1,4 @@
+
 {
   "version": 2,
   "builds": [
@@ -15,13 +16,8 @@
       "dest": "streamlit_app.py"
     }
   ],
-  "build": {
-    "env": {
-      "PYTHONUNBUFFERED": "1"
-    },
-    "commands": [
-      "sh setup.sh"
-    ]
+  "buildCommand": "sh setup.sh",
+  "env": {
+    "PYTHONUNBUFFERED": "1"
   }
 }
-
